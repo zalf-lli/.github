@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fetch RSS feeds from iat-dml.github.io and inject them into profile/README.md."""
+"""Fetch RSS feeds from iat-dml/iat-dml.github.io and inject them into profile/README.md."""
 
 import re
 import urllib.request
@@ -7,8 +7,10 @@ import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 
-NEWS_FEED_URL = "https://iat-dml.github.io/news.xml"
-PROJECTS_FEED_URL = "https://iat-dml.github.io/projects.xml"
+# Read directly from the gh-pages branch via raw.githubusercontent.com
+# to avoid depending on the live GitHub Pages site being reachable.
+NEWS_FEED_URL = "https://raw.githubusercontent.com/iat-dml/iat-dml.github.io/gh-pages/news.xml"
+PROJECTS_FEED_URL = "https://raw.githubusercontent.com/iat-dml/iat-dml.github.io/gh-pages/projects.xml"
 README_PATH = "profile/README.md"
 MAX_ITEMS = 5
 
